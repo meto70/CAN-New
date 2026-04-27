@@ -20,16 +20,47 @@ export function Footer({ onNavigate }: FooterProps) {
     <footer className="py-24 px-6 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-20 space-y-12 md:space-y-0">
-          <button onClick={() => onNavigate("home")} className="hover:opacity-80 transition-opacity">
+          <button 
+            onClick={() => onNavigate("home")} 
+            className="hover:opacity-80 transition-opacity"
+            aria-label="Zur Startseite"
+            type="button"
+          >
             <Logo />
           </button>
           
-          <div className="flex flex-wrap gap-x-12 gap-y-4 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
-            <button onClick={() => handleLinkClick("services")} className="hover:text-blue-600 transition-colors uppercase cursor-pointer">Leistungen</button>
-            <button onClick={() => handleLinkClick("about")} className="hover:text-blue-600 transition-colors uppercase cursor-pointer">Über uns</button>
-            <button onClick={() => onNavigate("impressum")} className="hover:text-blue-600 transition-colors uppercase cursor-pointer">Impressum</button>
-            <button onClick={() => onNavigate("datenschutz")} className="hover:text-blue-600 transition-colors uppercase cursor-pointer">Datenschutz</button>
-          </div>
+          <nav aria-label="Footer Navigation">
+            <div className="flex flex-wrap gap-x-12 gap-y-4 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
+              <button 
+                onClick={() => handleLinkClick("services")} 
+                className="hover:text-blue-600 transition-colors uppercase cursor-pointer"
+                type="button"
+              >
+                Leistungen
+              </button>
+              <button 
+                onClick={() => handleLinkClick("about")} 
+                className="hover:text-blue-600 transition-colors uppercase cursor-pointer"
+                type="button"
+              >
+                Über uns
+              </button>
+              <button 
+                onClick={() => onNavigate("impressum")} 
+                className="hover:text-blue-600 transition-colors uppercase cursor-pointer"
+                type="button"
+              >
+                Impressum
+              </button>
+              <button 
+                onClick={() => onNavigate("datenschutz")} 
+                className="hover:text-blue-600 transition-colors uppercase cursor-pointer"
+                type="button"
+              >
+                Datenschutz
+              </button>
+            </div>
+          </nav>
         </div>
         
         <div className="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between text-[11px] font-medium text-gray-400 tracking-wide">

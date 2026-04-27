@@ -7,22 +7,26 @@ interface LegalPageProps {
 
 export function Impressum({ onBack }: LegalPageProps) {
   return (
-    <div className="pt-48 pb-32 px-6 bg-white min-h-screen">
+    <article className="pt-48 pb-32 px-6 bg-white min-h-screen">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-12 tracking-tight">Impressum</h1>
         <div className="space-y-10 text-gray-600 leading-relaxed">
           <section>
             <h2 className="text-xl font-bold mb-4 text-gray-900 border-b border-gray-100 pb-2">Angaben gemäß § 5 TMG</h2>
-            <p className="font-medium">Hatice Çerçioğlu Can</p>
-            <p>CAN Gebäudereinigung</p>
-            <p>Berliner Str. 33</p>
-            <p>21493 Schwarzenbek</p>
+            <address className="not-italic">
+              <p className="font-medium text-gray-900">Hatice Çerçioğlu Can</p>
+              <p>CAN Gebäudereinigung</p>
+              <p>Berliner Str. 33</p>
+              <p>21493 Schwarzenbek</p>
+            </address>
           </section>
           
           <section>
             <h2 className="text-xl font-bold mb-4 text-gray-900 border-b border-gray-100 pb-2">Kontakt</h2>
-            <p>Telefon: +49 173 717 84 68</p>
-            <p>E-Mail: metehan_bacak [at] hotmail.de</p>
+            <address className="not-italic">
+              <p>Telefon: <a href="tel:+491737178468" className="hover:text-blue-600 transition-colors">+49 173 717 84 68</a></p>
+              <p>E-Mail: <span className="whitespace-nowrap">metehan_bacak [at] hotmail.de</span></p>
+            </address>
           </section>
 
           <section>
@@ -32,25 +36,28 @@ export function Impressum({ onBack }: LegalPageProps) {
 
           <section>
             <h2 className="text-xl font-bold mb-4 text-gray-900 border-b border-gray-100 pb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-            <p>Hatice Çerçioğlu Can<br />Berliner Str. 33<br />21493 Schwarzenbek</p>
+            <address className="not-italic">
+              <p>Hatice Çerçioğlu Can<br />Berliner Str. 33<br />21493 Schwarzenbek</p>
+            </address>
           </section>
         </div>
         
         <button 
           onClick={onBack}
           className="mt-20 flex items-center space-x-2 text-blue-600 font-semibold hover:translate-x-[-4px] transition-transform cursor-pointer"
+          type="button"
         >
-          <ArrowLeft size={20} />
+          <ArrowLeft size={20} aria-hidden="true" />
           <span>Zurück zur Startseite</span>
         </button>
       </div>
-    </div>
+    </article>
   );
 }
 
 export function Datenschutz({ onBack }: LegalPageProps) {
   return (
-    <div className="pt-48 pb-32 px-6 bg-white min-h-screen">
+    <article className="pt-48 pb-32 px-6 bg-white min-h-screen">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-12 tracking-tight">Datenschutzerklärung</h1>
         <div className="space-y-8 text-gray-600 leading-relaxed font-light">
@@ -78,11 +85,12 @@ export function Datenschutz({ onBack }: LegalPageProps) {
         <button 
           onClick={onBack}
           className="mt-20 flex items-center space-x-2 text-blue-600 font-semibold hover:translate-x-[-4px] transition-transform cursor-pointer"
+          type="button"
         >
-          <ArrowLeft size={20} />
+          <ArrowLeft size={20} aria-hidden="true" />
           <span>Zurück zur Startseite</span>
         </button>
       </div>
-    </div>
+    </article>
   );
 }

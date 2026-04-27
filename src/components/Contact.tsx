@@ -86,36 +86,50 @@ export function Contact() {
             <h3 className="text-2xl font-bold mb-8 tracking-tight">Nachricht senden</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  placeholder="Name" 
+                <div className="space-y-2">
+                  <label htmlFor="name" className="sr-only">Name</label>
+                  <input 
+                    id="name"
+                    type="text" 
+                    placeholder="Ihr Name" 
+                    required 
+                    autoComplete="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all placeholder:text-gray-400" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="sr-only">E-Mail</label>
+                  <input 
+                    id="email"
+                    type="email" 
+                    placeholder="Ihre E-Mail" 
+                    required 
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all placeholder:text-gray-400" 
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="message" className="sr-only">Ihre Nachricht</label>
+                <textarea 
+                  id="message"
+                  placeholder="Was können wir für Sie tun? (z.B. Unterhaltsreinigung, Fenster, etc.)" 
                   required 
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all" 
-                />
-                <input 
-                  type="email" 
-                  placeholder="E-Mail" 
-                  required 
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all" 
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none h-40 resize-none placeholder:text-gray-400" 
                 />
               </div>
-              <textarea 
-                placeholder="Was können wir für Sie tun?" 
-                required 
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-                className="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none h-40 resize-none" 
-              />
               <button 
                 type="submit" 
                 className="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 active:scale-95"
               >
                 <span>Angebot anfordern</span>
-                <Send size={20} />
+                <Send size={20} aria-hidden="true" />
               </button>
             </form>
           </motion.div>
