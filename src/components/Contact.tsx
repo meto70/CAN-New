@@ -10,29 +10,26 @@ export function Contact() {
   });
   const [showToast, setShowToast] = React.useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    const mailUser = "metehan_bacak";
+    const mailDomain = "hotmail.de";
+    const fullMailAddress = `${mailUser}@${mailDomain}`;
+    
+    const subject = encodeURIComponent("Angebotsanfrage: " + formData.name);
+    const body = encodeURIComponent(
+        "Name: " + formData.name + "\n" +
+        "E-Mail: " + formData.email + "\n\n" +
+        "Anfrage:\n" + formData.message
+    );
 
-      if (response.ok) {
-        setShowToast(true);
-        setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => setShowToast(false), 4000);
-      } else {
-        alert("Fehler beim Senden. Bitte versuchen Sie es später erneut.");
-      }
-    } catch (error) {
-      console.error("Fehler:", error);
-      alert("Es gab ein Problem mit der Verbindung.");
-    }
+    window.location.href = `mailto:${fullMailAddress}?subject=${subject}&body=${body}`;
+    
+    setShowToast(true);
+    setFormData({ name: "", email: "", message: "" });
+    
+    setTimeout(() => setShowToast(false), 4000);
   };
 
   return (
