@@ -638,11 +638,24 @@
         const mailDomain = "hotmail.de";
         const fullMailAddress = mailUser + "@" + mailDomain;
         
-        const subject = encodeURIComponent("Angebotsanfrage: " + nameValue);
+        // Dynamically compute German-formatted date: DD.MM.YYYY
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        const dateStr = day + "." + month + "." + year;
+
+        // Subject: Angebotsanfrage - [Name] - [Datum]
+        const subject = encodeURIComponent("Angebotsanfrage - " + nameValue + " - " + dateStr);
+        
+        // Formatted Body Paragraph
         const bodyText = encodeURIComponent(
-          "Name: " + nameValue + "\n" +
-          "E-Mail: " + emailValue + "\n\n" +
-          "Anfrage:\n" + msgValue
+          "Sehr geehrte Damen und Herren,\n\n" +
+          "ich benötige von Ihnen ein Angebot.\n\n" +
+          "\"" + msgValue + "\"\n\n" +
+          "Mit freundlichen Grüßen,\n" +
+          nameValue + "\n" +
+          emailValue
         );
 
         // Action the mail client pop redirection cleanly
