@@ -370,28 +370,47 @@
               </div>
 
               <!-- Contact Form -->
-              <div class="bg-white text-gray-900 p-10 md:p-16 rounded-[3.5rem] text-left shadow-2xl relative z-10">
-                <h3 class="text-2xl font-bold mb-8 tracking-tight">Nachricht senden</h3>
-                <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-6">
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                      <label htmlFor="form-name" class="sr-only">Name</label>
-                      <input id="form-name" type="text" placeholder="Ihr Name" required autoComplete="name" class="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all placeholder:text-gray-400 text-gray-900" />
+              <div id="contact-form-container" class="bg-white text-gray-900 p-10 md:p-16 rounded-[3.5rem] text-left shadow-2xl relative z-10">
+                <div id="contact-form-wrapper" class="block">
+                  <h3 class="text-2xl font-bold mb-8 tracking-tight">Nachricht senden</h3>
+                  <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div class="space-y-2">
+                        <label htmlFor="form-name" class="sr-only">Name</label>
+                        <input id="form-name" type="text" placeholder="Ihr Name" required autoComplete="name" class="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all placeholder:text-gray-400 text-gray-900" />
+                      </div>
+                      <div class="space-y-2">
+                        <label htmlFor="form-email" class="sr-only">E-Mail</label>
+                        <input id="form-email" type="email" placeholder="Ihre E-Mail" required autoComplete="email" class="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all placeholder:text-gray-400 text-gray-900" />
+                      </div>
                     </div>
                     <div class="space-y-2">
-                      <label htmlFor="form-email" class="sr-only">E-Mail</label>
-                      <input id="form-email" type="email" placeholder="Ihre E-Mail" required autoComplete="email" class="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none transition-all placeholder:text-gray-400 text-gray-900" />
+                      <label htmlFor="form-message" class="sr-only">Ihre Nachricht</label>
+                      <textarea id="form-message" placeholder="Was können wir für Sie tun? (z.B. Unterhaltsreinigung, Fenster, etc.)" required class="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none h-40 resize-none placeholder:text-gray-400 text-gray-900"></textarea>
                     </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 active:scale-95">
+                      <span>Angebot anfordern</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    </button>
+                    <p class="text-xs text-gray-400 text-center mt-6 leading-relaxed max-w-md mx-auto">
+                      Hinweis: Da unsere Webseite aus Datenschutzgründen keine Daten auf Servern speichert, öffnet sich beim Klick Ihr eigenes E-Mail-Programm. Sie müssen die Nachricht dort nur noch auf 'Absenden' klicken.
+                    </p>
+                  </form>
+                </div>
+
+                <!-- Success State Container (shown dynamically on submit click) -->
+                <div id="contact-success-wrapper" class="hidden py-12 text-center">
+                  <div class="bg-blue-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                   </div>
-                  <div class="space-y-2">
-                    <label htmlFor="form-message" class="sr-only">Ihre Nachricht</label>
-                    <textarea id="form-message" placeholder="Was können wir für Sie tun? (z.B. Unterhaltsreinigung, Fenster, etc.)" required class="w-full bg-gray-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 outline-none h-40 resize-none placeholder:text-gray-400 text-gray-900"></textarea>
-                  </div>
-                  <button type="submit" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 active:scale-95">
-                    <span>Angebot anfordern</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                  <h3 class="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Vielen Dank!</h3>
+                  <p class="text-gray-650 leading-relaxed max-w-xl mx-auto mb-10 text-base select-none">
+                    Ihre E-Mail-App wurde gestartet. Bitte prüfen Sie das geöffnete Fenster und senden Sie die vorbereitete Anfrage ab. Wir melden uns schnellstmöglich bei Ihnen!
+                  </p>
+                  <button type="button" onclick="resetContactView()" class="px-8 py-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold text-sm rounded-full transition-all border border-gray-100 cursor-pointer">
+                    Weitere Anfrage senden
                   </button>
-                </form>
+                </div>
               </div>
 
             </div>
@@ -645,27 +664,40 @@
         const year = today.getFullYear();
         const dateStr = day + "." + month + "." + year;
 
-        // Subject: Angebotsanfrage - [Name] - [Datum]
-        const subject = encodeURIComponent("Angebotsanfrage - " + nameValue + " - " + dateStr);
+        // Subject: Angebotsanfrage: [Name des Besuchers] - [Absende Datum]
+        const subject = encodeURIComponent("Angebotsanfrage: " + nameValue + " - " + dateStr);
         
-        // Formatted Body Paragraph
+        // Formatted Body Paragraph according to precise structure instructions
         const bodyText = encodeURIComponent(
           "Sehr geehrte Damen und Herren,\n\n" +
-          "ich benötige von Ihnen ein Angebot.\n\n" +
+          "ich interessiere mich für ein Angebot und bitte um die Erstellung eines unverbindlichen Kostenvoranschlags für mein Anliegen.\n\n" +
+          "--- DETAILS DER ANFRAGE ---\n" +
           "\"" + msgValue + "\"\n\n" +
-          "Mit freundlichen Grüßen,\n" +
-          nameValue + "\n" +
-          emailValue
+          "--- KUNDENDATEN ---\n\n" +
+          "Name: " + nameValue + "\n\n" +
+          "E-Mail: " + emailValue + "\n\n" +
+          "Mit freundlichen Grüßen\n" +
+          nameValue
         );
 
         // Action the mail client pop redirection cleanly
         window.location.href = "mailto:" + fullMailAddress + "?subject=" + subject + "&body=" + bodyText;
 
-        // Reset the form
+        // Reset the form values
         document.getElementById('contact-form').reset();
 
-        // Popup Toast notifying the user the draft is complete
-        showToastNotification();
+        // Swap the views from input to beautiful success confirmation
+        document.getElementById('contact-form-wrapper').classList.add('hidden');
+        document.getElementById('contact-success-wrapper').classList.remove('hidden');
+
+        // Scroll back up to the form container top smoothly for elegant feedback
+        document.getElementById('contact-form-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      // Restore form layout for secondary messages
+      function resetContactView() {
+        document.getElementById('contact-form-wrapper').classList.remove('hidden');
+        document.getElementById('contact-success-wrapper').classList.add('hidden');
       }
 
       // Toast feedback animations
